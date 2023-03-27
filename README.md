@@ -20,18 +20,17 @@
 
 <p align="center">
     <a href="https://github.com/jongbonga#gh-light-mode-only">
-        <img height="210em" src="https://github-readme-stats.vercel.app/api?username=jongbonga&count_private=true&show_icons=true&include_all_commits=true&custom_title=jongbonga%27s%20github%20stats&hide_border=true&line_height=28&theme=graywhite" align = "center"/>
+        <img height="210em" src="https://github-readme-stats.vercel.app/api?username=jongbonga&count_private=true&show_icons=true&include_all_commits=true&custom_title=Jonathan%27s%20github%20stats&hide_border=true&line_height=28&theme=graywhite" align = "center"/>
     </a>
     <a href="https://github.com/jongbonga#gh-light-mode-only">
-        <img height="210em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=jongbonga&count_private=true&show_icons=true&include_all_commits=true&layout=compact&hide_border=true&langs_count=10&theme=graywhite" align = "center"/>
+        <img height="210em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=jongbonga&count_private=true&show_icons=true&include_all_commits=true&layout=compact&hide_border=true&theme=graywhite" align = "center"/>
     </a>
     <a href="https://github.com/jongbonga#gh-dark-mode-only">
-        <img height="210em" src="https://github-readme-stats.vercel.app/api?username=jongbonga&count_private=true&show_icons=true&include_all_commits=true&custom_title=jongbonga%27s%20github%20stats&hide_border=true&line_height=28&theme=dark" align = "center"/>
+        <img height="210em" src="https://github-readme-stats.vercel.app/api?username=jongbonga&count_private=true&show_icons=true&include_all_commits=true&custom_title=Jonathan%27s%20github%20stats&hide_border=true&line_height=28&theme=dark" align = "center"/>
     </a>
     <a href="https://github.com/jongbonga#gh-dark-mode-only">
-        <img height="210em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=jongbonga&count_private=true&show_icons=true&include_all_commits=true&layout=compact&hide_border=true&langs_count=10&theme=dark" align = "center"/>
+        <img height="210em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=jongbonga&count_private=true&show_icons=true&include_all_commits=true&layout=compact&hide_border=true&theme=dark" align = "center"/>
     </a>
-
 </p>
 
 <p align="center">
