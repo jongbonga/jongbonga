@@ -1,6 +1,6 @@
 ### Hi there 👋 I'm Jonathan
 
-## 👨‍💻 What I am doing..
+## 👨‍💻 What I use..
 
 ![JavaScript](https://img.shields.io/badge/-JavaScript-FFFF00?style=flat&logo=javascript&logoColor=black)
 ![Angular](https://img.shields.io/badge/-Angular-a6120d?style=flat&logo=angular&logoColor=white)
