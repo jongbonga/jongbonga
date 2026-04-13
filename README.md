@@ -39,9 +39,9 @@
 
 <p align="center">
   <a href="https://github.com/jongbonga#gh-light-mode-only">
-    <img height="210em" src="https://github-readme-streak-stats.herokuapp.com/?user=jongbonga&theme=default" alt="jongbonga" />
+    <img height="210em" src="https://streak-stats.demolab.com?user=jongbonga&theme=default&hide_border=true" alt="jongbonga" />
   </a>
   <a href="https://github.com/jongbonga#gh-dark-mode-only">
-    <img height="210em" src="https://github-readme-streak-stats.herokuapp.com/?user=jongbonga&theme=dark" alt="jongbonga" />
+    <img height="210em" src="https://streak-stats.demolab.com?user=jongbonga&theme=dark&hide_border=true" alt="jongbonga" />
   </a>
 </p>
