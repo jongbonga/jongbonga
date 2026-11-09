@@ -1,0 +1,103 @@
+:root {
+  --bg: #fafafa;
+  --block: #ffffff;
+  --border: #e6e6e6;
+  --text: #111111;
+  --muted: #737373;
+  --accent: #111111;
+  --on-accent: #ffffff;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0b0b0b;
+    --block: #121212;
+    --border: #262626;
+    --text: #f2f2f2;
+    --muted: #8a8a8a;
+    --accent: #f2f2f2;
+    --on-accent: #0b0b0b;
+  }
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 15px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+main {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 56px 16px 40px;
+  display: grid;
+  gap: 16px;
+}
+
+a { color: inherit; text-decoration-color: var(--border); text-underline-offset: 3px; }
+a:hover { text-decoration-color: currentColor; }
+
+.block {
+  background: var(--block);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 24px;
+}
+
+h1, h2 { margin: 0; font-weight: 400; }
+h1 { font-size: 18px; font-weight: 600; }
+h2 {
+  font-family: Georgia, "Times New Roman", serif;
+  font-style: italic;
+  font-size: 22px;
+  margin-bottom: 16px;
+}
+
+p { margin: 0 0 8px; }
+.muted { color: var(--muted); }
+.small { font-size: 13px; }
+
+.intro p { margin-bottom: 12px; }
+.intro p:last-child { margin-bottom: 0; }
+
+.item {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 2px 16px;
+  padding: 14px 0;
+  border-top: 1px solid var(--border);
+}
+.item:first-of-type { border-top: 0; padding-top: 0; }
+.item:last-child { padding-bottom: 0; }
+.item .name { font-weight: 600; }
+.item .meta { color: var(--muted); font-size: 13px; }
+.item .desc { grid-column: 1 / -1; color: var(--muted); }
+
+.tags { display: flex; flex-wrap: wrap; gap: 8px; margin: 0; padding: 0; list-style: none; }
+.tags li {
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 2px 12px;
+  font-size: 13px;
+}
+
+.buttons { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
+.btn {
+  display: inline-block;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 8px 14px;
+  font-size: 14px;
+  text-decoration: none;
+}
+.btn.primary { background: var(--accent); color: var(--on-accent); border-color: var(--accent); }
+
+footer { text-align: center; color: var(--muted); font-size: 13px; padding-top: 8px; }
+
+@media (max-width: 480px) {
+  main { padding-top: 32px; }
+  .block { padding: 20px; }
+}
