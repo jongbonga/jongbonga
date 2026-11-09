@@ -41,6 +41,70 @@ async function gql(variables) {
   return json.data.user;
 }
 
+const CAL_QUERY = `
+query($login:String!,$from:DateTime!,$to:DateTime!){
+  user(login:$login){
+    createdAt
+    contributionsCollection(from:$from,to:$to){
+      contributionCalendar{ weeks{ contributionDays{ date contributionCount } } }
+    }
+  }
+}`;
+
+async function calendarYear(year) {
+  const res = await fetch('https://api.github.com/graphql', {
+    method: 'POST',
+    headers: { Authorization: `bearer ${TOKEN}`, 'Content-Type': 'application/json' },
+    body: JSON.stringify({ query: CAL_QUERY, variables: { login: USER, from: `${year}-01-01T00:00:00Z`, to: `${year}-12-31T23:59:59Z` } }),
+  });
+  const json = await res.json();
+  if (!res.ok || json.errors) throw new Error(JSON.stringify(json.errors || json));
+  return json.data.user;
+}
+
+// Every day with its contribution count, from account creation to today.
+async function fetchDays() {
+  if (process.env.MOCK) return mockDays();
+  const first = await calendarYear(new Date().getUTCFullYear());
+  const startYear = new Date(first.createdAt).getUTCFullYear();
+  const days = new Map();
+  for (let y = startYear; y <= new Date().getUTCFullYear(); y++) {
+    const u = y === new Date().getUTCFullYear() ? first : await calendarYear(y);
+    for (const w of u.contributionsCollection.contributionCalendar.weeks)
+      for (const d of w.contributionDays) days.set(d.date, d.contributionCount);
+  }
+  return days;
+}
+
+function mockDays() {
+  const days = new Map(), today = new Date();
+  for (let i = 0; i < 900; i++) {
+    const d = new Date(today - i * 864e5).toISOString().slice(0, 10);
+    days.set(d, i % 11 === 0 || (i > 20 && i < 70) ? 0 : (i * 7) % 5 + (i < 9 ? 1 : 0));
+  }
+  return days;
+}
+
+const addDay = (iso, n) => new Date(Date.parse(iso) + n * 864e5).toISOString().slice(0, 10);
+
+function computeStreaks(days) {
+  const keys = [...days.keys()].sort();
+  const today = new Date().toISOString().slice(0, 10);
+  let total = 0, best = { len: 0, start: null, end: null }, run = { len: 0, start: null, end: null };
+  for (const k of keys) {
+    const n = days.get(k);
+    total += n;
+    if (n > 0) {
+      run = run.len > 0 && run.end === addDay(k, -1) ? { ...run, len: run.len + 1, end: k } : { len: 1, start: k, end: k };
+      if (run.len > best.len) best = { ...run };
+    } else run = { len: 0, start: null, end: null };
+  }
+  // Current streak counts back from today, or from yesterday if today has no activity yet.
+  let cur = { len: 0, start: null, end: null }, d = (days.get(today) || 0) > 0 ? today : addDay(today, -1);
+  while ((days.get(d) || 0) > 0) { cur = { len: cur.len + 1, start: d, end: cur.end || d }; d = addDay(d, -1); }
+  return { total, since: keys[0], cur, best };
+}
+
 async function fetchData() {
   if (process.env.MOCK) return mock();
   if (!TOKEN) throw new Error('GH_TOKEN is required');
@@ -119,10 +183,30 @@ function langsCard(t, data) {
   return frame(t, 395, 72 + list.length * 30 + 12, 'Top Languages', rows.join('\n'));
 }
 
+const fmtDate = (iso) => new Date(iso + 'T00:00:00Z').toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric', timeZone: 'UTC' });
+const fmtShort = (iso) => new Date(iso + 'T00:00:00Z').toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'UTC' });
+
+function streakCard(t, s) {
+  const col = (cx, big, label, sub, accent) => `  <text x="${cx}" y="88" ${FONT} font-size="34" font-weight="700" fill="${accent ? '#f78166' : t.title}" text-anchor="middle">${esc(big)}</text>
+  <text x="${cx}" y="118" ${FONT} font-size="14" font-weight="${accent ? 600 : 400}" fill="${accent ? '#f78166' : t.title}" text-anchor="middle">${esc(label)}</text>
+  <text x="${cx}" y="140" ${FONT} font-size="12" fill="${t.text}" text-anchor="middle">${esc(sub)}</text>`;
+  const range = (r) => r.len ? `${fmtShort(r.start)} - ${fmtShort(r.end)}` : '-';
+  const body = [
+    col(87, s.total.toLocaleString('en-US'), 'Total Contributions', `${fmtDate(s.since)} - Present`),
+    col(260, s.cur.len, 'Current Streak', range(s.cur), true),
+    col(433, s.best.len, 'Longest Streak', s.best.len ? `${fmtDate(s.best.start)} - ${fmtDate(s.best.end)}` : '-'),
+    `  <line x1="173" y1="60" x2="173" y2="150" stroke="${t.border}"/>`,
+    `  <line x1="347" y1="60" x2="347" y2="150" stroke="${t.border}"/>`,
+  ].join('\n');
+  return frame(t, 520, 175, `${USER}'s Contribution Streak`, body);
+}
+
 const data = await fetchData();
+const streak = computeStreaks(await fetchDays());
 mkdirSync(OUT, { recursive: true });
 for (const [mode, t] of Object.entries(THEMES)) {
   writeFileSync(`${OUT}/stats-${mode}.svg`, statsCard(t, data));
   writeFileSync(`${OUT}/langs-${mode}.svg`, langsCard(t, data));
+  writeFileSync(`${OUT}/streak-${mode}.svg`, streakCard(t, streak));
 }
-console.log(`Wrote 4 cards to ${OUT}/`);
+console.log(`Wrote 6 cards to ${OUT}/`);

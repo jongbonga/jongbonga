@@ -37,7 +37,7 @@
 
 <p align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://streak-stats.demolab.com?user=jongbonga&theme=dark&hide_border=true">
-    <img height="210" alt="Contribution streak" src="https://streak-stats.demolab.com?user=jongbonga&theme=default&hide_border=true">
+    <source media="(prefers-color-scheme: dark)" srcset="assets/streak-dark.svg">
+    <img height="175" alt="Contribution streak" src="assets/streak-light.svg">
   </picture>
 </p>
