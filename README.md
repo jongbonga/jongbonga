@@ -26,12 +26,12 @@
 
 <p align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://github-readme-stats.vercel.app/api?username=jongbonga&count_private=true&show_icons=true&include_all_commits=true&custom_title=Jonathan%27s%20GitHub%20Stats&hide_border=true&line_height=28&theme=dark">
-    <img height="210" alt="Jonathan's GitHub stats" src="https://github-readme-stats.vercel.app/api?username=jongbonga&count_private=true&show_icons=true&include_all_commits=true&custom_title=Jonathan%27s%20GitHub%20Stats&hide_border=true&line_height=28&theme=graywhite">
+    <source media="(prefers-color-scheme: dark)" srcset="assets/stats-dark.svg">
+    <img height="210" alt="Jonathan's GitHub stats" src="assets/stats-light.svg">
   </picture>
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://github-readme-stats.vercel.app/api/top-langs/?username=jongbonga&count_private=true&include_all_commits=true&layout=compact&hide_border=true&theme=dark">
-    <img height="210" alt="Top languages" src="https://github-readme-stats.vercel.app/api/top-langs/?username=jongbonga&count_private=true&include_all_commits=true&layout=compact&hide_border=true&theme=graywhite">
+    <source media="(prefers-color-scheme: dark)" srcset="assets/langs-dark.svg">
+    <img height="210" alt="Top languages" src="assets/langs-light.svg">
   </picture>
 </p>
 
