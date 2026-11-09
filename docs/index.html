@@ -6,8 +6,15 @@
   <title>Jonathan Ngbonga</title>
   <meta name="description" content="Web and mobile developer.">
   <link rel="stylesheet" href="style.css">
+  <script>try { const t = localStorage.theme; if (t) document.documentElement.dataset.theme = t } catch {}</script>
 </head>
 <body>
+<button class="btn theme-toggle" aria-label="Toggle light and dark theme" onclick="
+  const root = document.documentElement
+  const dark = root.dataset.theme ? root.dataset.theme === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches
+  root.dataset.theme = dark ? 'light' : 'dark'
+  try { localStorage.theme = root.dataset.theme } catch {}
+">◐</button>
 <main>
 
   <!-- Intro -->
@@ -41,22 +48,22 @@
     <div class="items">
     <div class="item app">
       <img class="logo" src="img/pame.png" alt="" width="40" height="40">
-      <span class="name"><a href="https://fit.pame.app">Páme</a></span><span class="meta">iOS · Android</span>
+      <span class="name"><a href="https://pame.fit">Páme</a></span><span class="meta">iOS · Android</span>
       <span class="desc">Fitness with friends.</span>
     </div>
     <div class="item app">
       <img class="logo" src="img/cafe-inn.png" alt="" width="40" height="40">
-      <span class="name">Café Inn</span><span class="meta">iOS · Android</span>
+      <span class="name"><a href="https://cafe-inn.com">Café Inn</a></span><span class="meta">iOS · Android</span>
       <span class="desc">Share your daily coffee.</span>
     </div>
     <div class="item app">
       <img class="logo" src="img/roadprep.png" alt="" width="40" height="40">
-      <span class="name">Roadprep</span><span class="meta">iOS · Android</span>
+      <span class="name"><a href="https://roadprep.school">Roadprep</a></span><span class="meta">iOS · Android</span>
       <span class="desc">Driving theory test practice.</span>
     </div>
     <div class="item app">
       <img class="logo" src="img/wapi.png" alt="" width="40" height="40">
-      <span class="name">Wapi</span><span class="meta">iOS · Android</span>
+      <span class="name"><a href="https://wapi.place">Wapi</a></span><span class="meta">iOS · Android</span>
       <span class="desc">A social app for sharing places.</span>
     </div>
     </div>
