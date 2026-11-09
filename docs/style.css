@@ -101,3 +101,39 @@ footer { text-align: center; color: var(--muted); font-size: 13px; padding-top: 
   main { padding-top: 32px; }
   .block { padding: 20px; }
 }
+
+/* Desktop: two columns, whole page fits one screen */
+@media (min-width: 900px) {
+  main {
+    max-width: 1040px;
+    min-height: 100vh;
+    align-content: center;
+    padding: 24px 24px;
+    gap: 14px;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "intro projects"
+      "stack projects"
+      "hi    exp"
+      "foot  foot";
+  }
+  .a-intro { grid-area: intro; }
+  .a-stack { grid-area: stack; }
+  .a-projects { grid-area: projects; }
+  .a-exp { grid-area: exp; }
+  .a-hi { grid-area: hi; }
+  .a-foot { grid-area: foot; padding-top: 0; }
+  .block { padding: 20px 22px; }
+  h2 { font-size: 20px; margin-bottom: 12px; }
+  .item { padding: 10px 0; }
+  .tags { gap: 6px; }
+  .tags li { padding: 1px 10px; }
+}
+
+@media (min-width: 900px) and (max-height: 700px) {
+  main { padding: 12px 24px; gap: 10px; }
+  .block { padding: 14px 18px; }
+  h2 { font-size: 18px; margin-bottom: 8px; }
+  .item { padding: 7px 0; }
+  .intro p { margin-bottom: 8px; }
+}

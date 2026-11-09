@@ -9,7 +9,7 @@ const OUT = process.env.OUT_DIR || 'assets';
 const QUERY = `
 query($login:String!,$after:String){
   user(login:$login){
-    name
+    name bio location websiteUrl
     contributionsCollection{
       totalCommitContributions restrictedContributionsCount
       totalPullRequestContributions totalIssueContributions
@@ -21,7 +21,8 @@ query($login:String!,$after:String){
       totalCount
       pageInfo{ hasNextPage endCursor }
       nodes{
-        stargazerCount
+        name description url homepageUrl isPrivate isArchived pushedAt stargazerCount
+        primaryLanguage{ name }
         languages(first:10,orderBy:{field:SIZE,direction:DESC}){
           edges{ size node{ name color } }
         }
@@ -123,6 +124,11 @@ async function fetchData() {
     }
   return {
     name: user.name || USER,
+    profile: { name: user.name, bio: user.bio, location: user.location, website: user.websiteUrl },
+    repos: repos.filter((r) => !r.isPrivate && !r.isArchived).map((r) => ({
+      name: r.name, description: r.description, url: r.url, homepage: r.homepageUrl,
+      stars: r.stargazerCount, language: r.primaryLanguage?.name ?? null, pushed: r.pushedAt.slice(0, 10),
+    })),
     stats: {
       'Contributions (last year)': c.contributionCalendar.totalContributions,
       'Commits (last year)': c.totalCommitContributions + c.restrictedContributionsCount,
@@ -138,6 +144,8 @@ async function fetchData() {
 function mock() {
   return {
     name: 'Jonathan',
+    profile: { name: 'Jonathan', bio: null, location: null, website: null },
+    repos: [{ name: 'demo', description: 'Demo repo', url: 'https://github.com/x/demo', homepage: null, stars: 1, language: 'TypeScript', pushed: '2026-01-01' }],
     stats: { 'Contributions (last year)': 412, 'Commits (last year)': 380, 'Pull requests': 57,
       'Issues': 12, 'Stars earned': 34, 'Repositories': 41 },
     langs: { TypeScript: { size: 500, color: '#3178c6' }, JavaScript: { size: 320, color: '#f1e05a' },
@@ -202,6 +210,8 @@ function streakCard(t, s) {
 }
 
 const data = await fetchData();
+mkdirSync(OUT, { recursive: true });
+writeFileSync(`${OUT}/repos.json`, JSON.stringify({ profile: data.profile, repos: data.repos }, null, 2) + '\n');
 const streak = computeStreaks(await fetchDays());
 mkdirSync(OUT, { recursive: true });
 for (const [mode, t] of Object.entries(THEMES)) {
@@ -209,4 +219,4 @@ for (const [mode, t] of Object.entries(THEMES)) {
   writeFileSync(`${OUT}/langs-${mode}.svg`, langsCard(t, data));
   writeFileSync(`${OUT}/streak-${mode}.svg`, streakCard(t, streak));
 }
-console.log(`Wrote 6 cards to ${OUT}/`);
+console.log(`Wrote 6 cards + repos.json to ${OUT}/`);
