@@ -77,6 +77,9 @@ p { margin: 0 0 8px; }
 .item a.name:hover { text-decoration: underline; }
 .item .meta { color: var(--muted); font-size: 13px; }
 .item .desc { grid-column: 1 / -1; color: var(--muted); }
+.item.app { grid-template-columns: 40px 1fr auto; column-gap: 12px; align-items: center; }
+.item.app .logo { grid-row: 1 / span 2; width: 40px; height: 40px; border-radius: 10px; border: 1px solid var(--border); }
+.item.app .desc { grid-column: 2 / -1; }
 
 .tags { display: flex; flex-wrap: wrap; gap: 8px; margin: 0; padding: 0; list-style: none; }
 .tags li {
