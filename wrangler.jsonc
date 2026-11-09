@@ -2,6 +2,9 @@
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "jongbonga",
   "compatibility_date": "2026-11-01",
+  "routes": [
+    { "pattern": "ngbonga.com", "custom_domain": true }
+  ],
   "assets": {
     "directory": "./docs",
     "not_found_handling": "404-page"
