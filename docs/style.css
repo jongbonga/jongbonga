@@ -18,6 +18,15 @@
     --on-accent: #0b0b0b;
   }
 }
+:root[data-theme="dark"] {
+  --bg: #0b0b0b;
+  --block: #121212;
+  --border: #262626;
+  --text: #f2f2f2;
+  --muted: #8a8a8a;
+  --accent: #f2f2f2;
+  --on-accent: #0b0b0b;
+}
 
 * { box-sizing: border-box; }
 
@@ -99,6 +108,8 @@ p { margin: 0 0 8px; }
   text-decoration: none;
 }
 .btn.primary { background: var(--accent); color: var(--on-accent); border-color: var(--accent); }
+
+.theme-toggle { position: fixed; top: 12px; right: 12px; background: var(--block); color: var(--text); cursor: pointer; }
 
 footer { text-align: center; color: var(--muted); font-size: 13px; padding-top: 8px; }
 
