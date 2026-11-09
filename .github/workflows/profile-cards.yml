@@ -26,10 +26,16 @@ jobs:
           # Falls back to the default token, which only sees public data.
           GH_TOKEN: ${{ secrets.PROFILE_TOKEN || secrets.GITHUB_TOKEN }}
         run: node scripts/generate-cards.mjs
-      - name: Commit changes
+      - name: Commit changes (via API, so commits are verified)
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH: ${{ github.event.repository.default_branch }}
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add assets
-          git diff --cached --quiet || git commit -m "chore: update profile cards"
-          git push
+          for f in assets/*.svg; do
+            remote_sha=$(gh api "repos/$GITHUB_REPOSITORY/contents/$f?ref=$BRANCH" --jq .sha 2>/dev/null || true)
+            [ "$remote_sha" = "$(git hash-object "$f")" ] && continue
+            args=(-X PUT "repos/$GITHUB_REPOSITORY/contents/$f"
+                  -f message="chore: update $f" -f content="$(base64 -w0 "$f")" -f branch="$BRANCH")
+            [ -n "$remote_sha" ] && args+=(-f sha="$remote_sha")
+            gh api "${args[@]}" --silent
+          done
