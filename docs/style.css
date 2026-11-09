@@ -116,13 +116,12 @@ footer { text-align: center; color: var(--muted); font-size: 13px; padding-top: 
     grid-template-areas:
       "intro    stack"
       "projects projects"
-      "hi       exp"
+      "hi       hi"
       "foot     foot";
   }
   .a-intro { grid-area: intro; }
   .a-stack { grid-area: stack; }
   .a-projects { grid-area: projects; }
-  .a-exp { grid-area: exp; }
   .a-hi { grid-area: hi; }
   .a-foot { grid-area: foot; padding-top: 0; }
   .block { padding: 20px 22px; }
