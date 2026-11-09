@@ -2,15 +2,15 @@
   <rect x=".5" y=".5" width="394" height="263" rx="8" fill="#ffffff" stroke="#d0d7de"/>
   <text x="24" y="36" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="17" font-weight="600" fill="#1f2328">Top Languages</text>
   <text x="24" y="72" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="13" fill="#59636e">HTML</text>
-  <text x="371" y="72" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="13" fill="#59636e" text-anchor="end">39.7%</text>
+  <text x="371" y="72" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="13" fill="#59636e" text-anchor="end">39.6%</text>
   <rect x="24" y="78" width="347" height="8" rx="4" fill="#eaeef2"/>
-  <rect x="24" y="78" width="137.6" height="8" rx="4" fill="#e34c26"/>
+  <rect x="24" y="78" width="137.5" height="8" rx="4" fill="#e34c26"/>
   <text x="24" y="102" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="13" fill="#59636e">TypeScript</text>
-  <text x="371" y="102" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="13" fill="#59636e" text-anchor="end">23.7%</text>
+  <text x="371" y="102" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="13" fill="#59636e" text-anchor="end">23.6%</text>
   <rect x="24" y="108" width="347" height="8" rx="4" fill="#eaeef2"/>
-  <rect x="24" y="108" width="82.1" height="8" rx="4" fill="#3178c6"/>
+  <rect x="24" y="108" width="82.0" height="8" rx="4" fill="#3178c6"/>
   <text x="24" y="132" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="13" fill="#59636e">CSS</text>
-  <text x="371" y="132" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="13" fill="#59636e" text-anchor="end">19.7%</text>
+  <text x="371" y="132" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="13" fill="#59636e" text-anchor="end">19.6%</text>
   <rect x="24" y="138" width="347" height="8" rx="4" fill="#eaeef2"/>
   <rect x="24" y="138" width="68.2" height="8" rx="4" fill="#663399"/>
   <text x="24" y="162" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="13" fill="#59636e">JavaScript</text>
