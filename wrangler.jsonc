@@ -3,7 +3,7 @@
   "name": "jongbonga",
   "compatibility_date": "2026-11-01",
   "routes": [
-    { "pattern": "ngbonga.com", "custom_domain": true }
+    { "pattern": "jongbonga.com", "custom_domain": true }
   ],
   "assets": {
     "directory": "./docs",
