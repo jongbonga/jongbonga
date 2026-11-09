@@ -1,0 +1,46 @@
+{
+  "profile": {
+    "name": "Jonathan Ngbonga",
+    "bio": "",
+    "location": null,
+    "website": null
+  },
+  "repos": [
+    {
+      "name": "jongbonga",
+      "description": null,
+      "url": "https://github.com/jongbonga/jongbonga",
+      "homepage": null,
+      "stars": 0,
+      "language": "JavaScript",
+      "pushed": "2026-11-09"
+    },
+    {
+      "name": "code-reproduction",
+      "description": null,
+      "url": "https://github.com/jongbonga/code-reproduction",
+      "homepage": null,
+      "stars": 0,
+      "language": "TypeScript",
+      "pushed": "2024-07-07"
+    },
+    {
+      "name": "Pouls",
+      "description": null,
+      "url": "https://github.com/jongbonga/Pouls",
+      "homepage": null,
+      "stars": 0,
+      "language": "Vue",
+      "pushed": "2026-07-24"
+    },
+    {
+      "name": "Positions-Book",
+      "description": "Live two-wallet position book: Kamino (Solana) + Beefy (BNB Chain), read client-side on every page load. Addresses and cost basis stay in the browser.",
+      "url": "https://github.com/jongbonga/Positions-Book",
+      "homepage": null,
+      "stars": 0,
+      "language": "HTML",
+      "pushed": "2026-09-27"
+    }
+  ]
+}
