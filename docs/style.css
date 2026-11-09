@@ -114,10 +114,10 @@ footer { text-align: center; color: var(--muted); font-size: 13px; padding-top: 
     gap: 14px;
     grid-template-columns: 1fr 1fr;
     grid-template-areas:
-      "intro projects"
-      "stack projects"
-      "hi    exp"
-      "foot  foot";
+      "intro    stack"
+      "projects projects"
+      "hi       exp"
+      "foot     foot";
   }
   .a-intro { grid-area: intro; }
   .a-stack { grid-area: stack; }
@@ -127,7 +127,9 @@ footer { text-align: center; color: var(--muted); font-size: 13px; padding-top: 
   .a-foot { grid-area: foot; padding-top: 0; }
   .block { padding: 20px 22px; }
   h2 { font-size: 20px; margin-bottom: 12px; }
-  .item { padding: 10px 0; }
+  .a-projects .items { display: grid; grid-template-columns: 1fr 1fr; gap: 0 32px; }
+  .a-projects .item:nth-child(2) { border-top: 0; padding-top: 0; }
+  .item { padding: 10px 0; align-content: start; }
   .tags { gap: 6px; }
   .tags li { padding: 1px 10px; }
 }
@@ -138,4 +140,19 @@ footer { text-align: center; color: var(--muted); font-size: 13px; padding-top: 
   h2 { font-size: 18px; margin-bottom: 8px; }
   .item { padding: 7px 0; }
   .intro p { margin-bottom: 8px; }
+}
+
+/* Shorter desktop windows (typical laptop viewport): compact everything */
+@media (min-width: 900px) and (max-height: 800px) {
+  main { padding: 12px 24px; gap: 10px; }
+  .block { padding: 14px 18px; }
+  h2 { font-size: 18px; margin-bottom: 8px; }
+  body { line-height: 1.45; font-size: 14px; }
+  .item { padding: 6px 0; }
+  .a-projects .item .desc { font-size: 13px; }
+  .a-projects p.small { margin-top: 8px !important; }
+  .a-foot { display: none; }
+  .intro p { margin-bottom: 6px; }
+  .btn { padding: 5px 12px; }
+  .tags li { font-size: 12px; }
 }
